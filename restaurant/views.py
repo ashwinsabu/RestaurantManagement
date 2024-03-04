@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Table,Menu
 # Create your views here.
 
 
@@ -8,10 +9,18 @@ def IndexPageView(request):
     return render(request, 'users/index.html')
 
 def TablePageView(request):
-    return render(request, 'users/tables.html')
+    tables = Table.objects.all().values()
+    context = {
+    'tables': tables,
+  }
+    return render(request, 'users/tables.html',context)
 
 def menuPageView(request):
-    return render(request, 'users/menu.html')
+    menu = Menu.objects.all().values()
+    context = {
+    'menu': menu,
+  }
+    return render(request, 'users/menu.html',context)
 
 def stausfoodPageView(request):
     return render(request, 'users/food_status.html')

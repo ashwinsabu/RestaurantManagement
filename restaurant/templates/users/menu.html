@@ -13,32 +13,18 @@
   <body>
     {% extends './header.html' %}
     {% block content %}
-    <div >
-        <container>
-            <div class="card-group">
+    <div class="container py-4 py-xl-5">
+            <div class="card-group row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+              {% for x in menu %}
                 <div class="card" style="margin: 0.4%;">
                   <img src="https://img.freepik.com/free-vector/hand-drawn-italian-restaurant-facebook-template_23-2150202671.jpg?t=st=1709295670~exp=1709299270~hmac=0a8b090d9547e0760e064e996b677d338e35bf2dd32d19b32a99742566f960cd&w=1060" class="card-img-top" alt="...">
                   <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
+                    <h5 class="card-title">{{x.name}}</h5>
                     <button type="button" class="btn btn-secondary">Select</button>
                   </div>
                 </div>
-                <div class="card" style="margin: 0.4%;">
-                  <img src="https://img.freepik.com/free-vector/hand-drawn-italian-restaurant-facebook-template_23-2150202671.jpg?t=st=1709295670~exp=1709299270~hmac=0a8b090d9547e0760e064e996b677d338e35bf2dd32d19b32a99742566f960cd&w=1060" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <button type="button" class="btn btn-secondary">Select</button>
-                  </div>
-                </div>
-                <div class="card" style="margin: 0.4%;">
-                  <img src="https://img.freepik.com/free-vector/hand-drawn-italian-restaurant-facebook-template_23-2150202671.jpg?t=st=1709295670~exp=1709299270~hmac=0a8b090d9547e0760e064e996b677d338e35bf2dd32d19b32a99742566f960cd&w=1060" class="card-img-top" alt="...">
-                  <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <button type="button" class="btn btn-secondary">Select</button>
-                  </div>
-                </div>
+                {% endfor %}
               </div>
-        </container>
     </div>
 
     <!-- Optional JavaScript -->
