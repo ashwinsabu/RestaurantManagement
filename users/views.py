@@ -10,9 +10,9 @@ def sign_up(request):
             user=form.save(commit=False)
             user.is_staff=True
             user.save()
-            un = form.cleaned_data.get('username')
-            messages.success(request, 'Account created for {}.'.format(un))
-            return redirect('sign_in')
+            # un = form.cleaned_data.get('username')
+            # messages.success(request, 'Account created for {}.'.format(un))
+            return redirect('login')
     elif request.method == "GET":
         form = UserSignUpForm()
     return render(request, 'users/signup.html', {'form': form})
@@ -36,3 +36,6 @@ def signin(request):
         else:
             msg = 'error validating form'
     return render(request, 'users/signin.html', {'form': form, 'msg': msg})
+
+def index20(request):
+    return render(request, 'users/index20.html')

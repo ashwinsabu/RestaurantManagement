@@ -6,6 +6,8 @@ from .models import Table,Menu
 
 
 def IndexPageView(request):
+    if request.user.is_staff == False:
+        return render(request, 'users/tables.html')
     return render(request, 'users/index.html')
 
 def TablePageView(request):
