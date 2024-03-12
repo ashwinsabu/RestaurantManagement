@@ -1,66 +1,114 @@
-<!-- <form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div>
-    <button type="submit">Sign Up</button>
-    </div>
-    <p></p>
-    <div>
-    If you have an account <a href="{% url 'login' %}">Sign In</a>Sign In</a>
-    </div>
-</form> -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <body>
-        <div class="content">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-md-6 contents">
-                <div class="row justify-content-center">
-                  <div class="col-md-12">
-                    <div class="form-block">
-                        <div class="mb-4">
-                            <h1>User Registration page</h1>
-                      </div>
-                        <span class="mb-0 text-muted">
-                    </span>
-                      <form  method="post">
-                          {% csrf_token %}
-                        <div class="form-group first">
-                          <label for="username">Username</label>
-                            {{ form.username }}
-                        </div>
-                        <div class="form-group first">
-                            <label for="firstname">firstname</label>
-                              {{ form.first_name }}
-                          </div>
-                          <div class="form-group first">
-                            <label for="lastname">lastname</label>
-                              {{ form.last_name }}
-                          </div>
-                        <div class="form-group first">
-                          <label for="email">Email</label>
-                            {{ form.email}}
-                        </div>
-                        <div class="form-group last mb-4">
-                          <label for="password">Password</label>
-                            {{ form.password1 }}
-                        </div>
-                        <div class="form-group last mb-4">
-                          <label for="password">confirm Password</label>
-                            {{ form.password2 }}
-                        </div>
-                        <span class="text-error">{{ form.errors }}</span>
-                        <input type="submit"  value="Register" class="btn btn-pill text-white btn-block btn-primary">
-                        <div>
-                            If you have an account <a href="{% url 'login' %}">Sign In
-                            </div>
-                      </form>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div>
+        <section style="margin-top: 3%;">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-md-8 col-xl-6 text-center mx-auto">
+                        <h2 class="display-6 fw-bold">SIGN UP</h2>
+                        <p class="text-muted">We are ready to serve you</p>
                     </div>
-                  </div>
                 </div>
-              </div>
-      
             </div>
-          </div>
+        </section>
+    </div>
+    <div>
+        <div class="container py-4 py-xl-5">
+            <div class="row row-cols-1 row-cols-md-2">
+                <div class="col"><img class="rounded w-100 h-100 fit-cover" style="min-height: 300px;" src="https://img.freepik.com/free-vector/woman-cashier-checkout-shop-supermarket-white-background-friendly-female-worker-wearing-uniform-cash-register-market-flat-vector-illustration-shopping-payment-concept_74855-22089.jpg?t=st=1709978319~exp=1709981919~hmac=5e71ed8a065896f3bb91d852ba10547eace94430fd6fd5d80a62691e414edd2b&w=1060" width="336" height="530"></div>
+                <div class="col d-flex flex-column justify-content-center p-4">
+                    <section class="position-relative py-4 py-xl-5">
+                        <div class="container">
+                            <div class="row d-flex justify-content-center"><div class="card-body d-flex flex-column align-items-center">
+    <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4"><svg class="bi bi-person" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664z"></path>
+        </svg></div>
+    <form class="text-center" method="post">
+      {% csrf_token %}
+      <div class="row" style="margin-bottom: 1.5%;">
+        <div class="col">
+          <label for="username" class="font-italic">User Name</label>
         </div>
-        </body>
+        <div class="col">
+          {{ form.username }}
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 1.5%;">
+        <div class="col">
+          <label for="firstname" class="font-italic">First Name</label>
+        </div>
+        <div class="col">
+          {{ form.first_name }}
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 1.5%;">
+        <div class="col">
+          <label for="lastname" class="font-italic">Last Name</label>
+        </div>
+        <div class="col">
+          {{ form.last_name }}
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 1.5%;">
+        <div class="col">
+          <label for="email" class="font-italic">Email</label>
+        </div>
+        <div class="col">
+          {{ form.email }}
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 1.5%;">
+        <div class="col">
+          <label for="password" class="font-italic">Password</label>
+        </div>
+        <div class="col">
+          {{ form.password1 }}
+        </div>
+      </div>
+      <div class="row" style="margin-bottom: 1.5%;">
+        <div class="col">
+          <label for="username" class="font-italic">Confirm Password</label>
+        </div>
+        <div class="col">
+          {{ form.password2 }}
+        </div>
+      </div>
+
+        <!-- <div class="mb-3"><label for="username" class="font-italic">User Name</label><br>{{ form.username }}</div>
+        <div class="mb-3"><label for="username" class="font-italic">First Name</label><br>{{ form.first_name }}</div>
+        <div class="mb-3"><label for="username" class="font-italic">Last Name</label><br>{{ form.last_name }}</div>
+        <div class="mb-3"><label for="username" class="font-italic">Email</label><br>{{ form.email }}</div>
+        <div class="mb-3"><label for="username" class="font-italic">Password</label><br>{{ form. }}</div>
+        <div class="mb-3"><label for="username" class="font-italic">Password</label><br>{{ form.password1 }}</div>
+        <div class="mb-3"><label for="username" class="font-italic">Confirm Password</label><br>{{ form.password2 }}</div> -->
+        <span class="text-error">{{ form.errors }}</span>
+
+        <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">SignUp</button></div>
+        <div>
+          If you have an account <a href="{% url 'login' %}">Sign In
+          </div>
+    </form>
+</div>
+                                <div class="col-md-12 col-xl-4">
+                                    <div class="card mb-5"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

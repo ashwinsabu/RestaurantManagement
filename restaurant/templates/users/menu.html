@@ -13,20 +13,68 @@
   <body>
     {% extends './header.html' %}
     {% block content %}
+    <div>
     <div class="container py-4 py-xl-5">
-            <div class="card-group row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+      <h1>Non Veg Menu</h1>
+            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
               {% for x in menu %}
+              {% if x.type == 'nonveg' %}
+              <div class="col-2" style="margin-bottom: 2%;">
                 <div class="card" style="margin: 0.4%;">
                   <img src="https://img.freepik.com/free-vector/hand-drawn-italian-restaurant-facebook-template_23-2150202671.jpg?t=st=1709295670~exp=1709299270~hmac=0a8b090d9547e0760e064e996b677d338e35bf2dd32d19b32a99742566f960cd&w=1060" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title">{{x.name}}</h5>
-                    <button type="button" class="btn btn-secondary">Select</button>
+                    <form method="post">
+                      {% csrf_token %}
+                      <input type="hidden" name="menu_id" value="{{ x.id }}">
+                    <button type="submit" name="addcart" class="btn btn-secondary">Select</button>
+                  </form>
                   </div>
                 </div>
+              </div>
+                {% endif %}
                 {% endfor %}
               </div>
-    </div>
-
+      </div>
+      <div class="container py-4 py-xl-5">
+        <h1>Veg Menu</h1>
+        <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+          {% for x in menu %}
+          {% if x.type == 'veg' %}
+          <div class="col-2" style="margin-bottom: 2%;">
+            <div class="card" style="margin: 0.4%;">
+              <img src="https://img.freepik.com/free-vector/hand-drawn-italian-restaurant-facebook-template_23-2150202671.jpg?t=st=1709295670~exp=1709299270~hmac=0a8b090d9547e0760e064e996b677d338e35bf2dd32d19b32a99742566f960cd&w=1060" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">{{x.name}}</h5>
+                <form method="post">
+                  {% csrf_token %}
+                  <input type="hidden" name="menu_id" value="{{ x.id }}">
+                <button type="submit" name="addcart" class="btn btn-secondary">Select {% if x.id in itemcounts %} -- {{ itemcounts.4 }}{% endif %}</button>
+              </form>
+              </div>
+            </div>
+          </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        <div class="card" style="margin-left: 12%; margin-right: 12%;">
+          <h5 class="card-header">Cart List</h5>
+          <div class="card-body">
+            <h5 class="card-title">Food Items</h5>
+            {% for y in cartList %}
+            <p>
+              {{y.name}}
+            </p>
+            {% endfor %}
+            <form method="post">
+              {% csrf_token %}
+            <button name="submitorder" class="btn btn-primary">Place Order</button>
+          </form>
+          </div>
+        </div>
+        
+        </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

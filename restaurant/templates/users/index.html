@@ -24,8 +24,8 @@
                           <div class="row">
                               <div class="col-md-6 col-xl-4 offset-md-2">
                                   <div style="max-width: 350px;">
-                                      <h1 class="text-uppercase fw-bold">Biben dum<br>fringi dictum, augue purus</h1>
-                                      <p class="my-3">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
+                                      <h1 class="text-uppercase fw-bold">Taste your fav<br>We bring the best food to you</h1>
+                                      <p class="my-3">We bring the best food to youWe bring the best food to you</p>
                                   </div>
                               </div>
                           </div>
@@ -44,12 +44,43 @@
                     <div class="col-md-6">
                         <div class="text-white p-4 p-md-5">
                             <h2 class="fw-bold text-white mb-3">Enjoy the best dining experience with us</h2>
-                            <p class="mb-4">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
-                            <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="tables.html">Choose Table</a></div><a class="btn btn-light btn-lg" role="button" href="#">Pre Book Table</a>
+                            <p class="mb-4">Scan the QR code displayed on the table or select the option to manually select the table</p>
+                            
+                            <div class="my-3"><a class="btn btn-primary btn-lg me-2" role="button" href="{% url 'tables' %}">Choose Table</a></div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="userid" value="{{user.id}}">
+                            <button class="btn btn-light btn-lg" type="submit" name="track">Track My Order</button>
+                        </form>
                         </div>
                     </div>
                     <div class="col-md-6 order-first order-md-last" style="min-height: 250px;"><img alt="dish on white ceramic plate" class="w-100 h-100 fit-cover" src="https://img.freepik.com/free-photo/view-beautifully-decorated-round-table-with-natural-fir-branch-candle-two-flutes-plates-against-classic-sofa-modern-apartment_132075-6156.jpg?w=1060&t=st=1709292396~exp=1709292996~hmac=587c94ec09b75594a028af5288affd81f5588499600c26101cf787eb1f27bef6"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container py-4 py-xl-5">
+            <div class="row mb-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2><b><i>Todays Specials</i></b></h2>
+                    <p class="w-lg-50">Here are the specials for the day. Check with our staff to know more.</p>
+                </div>
+            </div>
+            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+                
+                {% for x in specials %}
+                <div class="col">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" />
+                        <div class="card-body p-4">
+                            <p class="text-primary card-text mb-0">Special</p>
+                            <h4 class="card-title">{{x.name}}</h4>
+                            <p class="card-text">{{x.description}}</p>
+                        
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
