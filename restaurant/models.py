@@ -31,6 +31,9 @@ class Orders(models.Model):
     user_no=models.ForeignKey(User, on_delete=models.CASCADE,related_name='user',null=True)
     table_no=models.ForeignKey(Table, on_delete=models.CASCADE)
     status=models.IntegerField(null=True)
+    attend=models.IntegerField(null=True,default=0)
+    date= models.DateField(null=True)
+    star=models.IntegerField(null=True)
     def __int__(self):
         return str(self.status)
     

@@ -14,6 +14,11 @@
     {% extends './header.html' %}
     {% block content %}
     <div>
+      {% if messages %}
+          {% for x in messages %}
+          <div class="alert alert-danger" role="alert" style="margin-top: 1%;">{{x}}</div>
+          {% endfor %}
+        {% endif %}
     <div class="container py-4 py-xl-5">
       <h1>Non Veg Menu</h1>
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
@@ -27,7 +32,8 @@
                     <form method="post">
                       {% csrf_token %}
                       <input type="hidden" name="menu_id" value="{{ x.id }}">
-                    <button type="submit" name="addcart" class="btn btn-secondary">Select</button>
+                      <button type="submit" name="addcart" class="btn btn-secondary" style="margin-bottom: 4%;">Add to cart</button>
+                      <button type="submit" name="removecart" class="btn btn-secondary">Remove</button>
                   </form>
                   </div>
                 </div>
@@ -49,7 +55,8 @@
                 <form method="post">
                   {% csrf_token %}
                   <input type="hidden" name="menu_id" value="{{ x.id }}">
-                <button type="submit" name="addcart" class="btn btn-secondary">Select {% if x.id in itemcounts %} -- {{ itemcounts.4 }}{% endif %}</button>
+                <button type="submit" name="addcart" class="btn btn-secondary" style="margin-bottom: 4%;">Add to cart</button>
+                <button type="submit" name="removecart" class="btn btn-secondary">Remove</button>
               </form>
               </div>
             </div>

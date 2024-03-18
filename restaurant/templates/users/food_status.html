@@ -30,28 +30,25 @@
   </div>
   <div>
     <div class="container py-4 py-xl-5">
+      <!-- Image section displayed according to the status -->
       <div class="row row-cols-1 row-cols-md-2">
-        {% if details.status == 1 %}
-        <div class="col"><img class="rounded w-100 h-100 fit-cover" style="min-height: 300px;"
-            src="https://img.freepik.com/free-vector/female-chef-concept-illustration_114360-12051.jpg?t=st=1710003389~exp=1710006989~hmac=dec2b90c6fbf2af5a7c6139e3d02f3f7a0f98a9cb81bb45edc2f446b573132d8&w=740"
-            width="336" height="530"></div>
-        {% endif %}
-        {% if details.status == 2 %}
-        <div class="col"><img class="rounded w-100 h-100 fit-cover" style="min-height: 200px;"
-            src="https://img.freepik.com/free-vector/simple-sketch-waiter_1308-84157.jpg?t=st=1710007582~exp=1710011182~hmac=c43ae6741f8620b747412ee86531c5c14c696d1ede6223c5251eeced52ae3983&w=740"
-            width="336" height="530"></div>
-        {% endif %}
-        {% if details.status == 3 %}
-        <div class="col"><img class="rounded w-100 h-100 fit-cover" style="min-height: 200px;"
-            src="https://img.freepik.com/free-vector/hand-drawn-flat-design-people-eating-collection_23-2149194118.jpg?t=st=1710008004~exp=1710011604~hmac=12e867f515cc020386c336f27ca8b728fd944c9beab46b36761a45b8786bd663&w=740"
-            width="336" height="530"></div>
-        {% endif %}
-        {% if details.status == 4 %}
+        {% if details.attend == 1 %}
         <div class="col"><img class="rounded w-100 h-100 fit-cover" style="min-height: 200px;"
             src="https://img.freepik.com/free-vector/office-man-woman-running_74855-4440.jpg?w=740"
             width="336" height="530"></div>
-        {% endif %}
-        {% if details.status == 5 %}
+        {% elif details.status == 1 %}
+        <div class="col"><img class="rounded w-100 h-100 fit-cover" style="min-height: 300px;"
+            src="https://img.freepik.com/free-vector/female-chef-concept-illustration_114360-12051.jpg?t=st=1710003389~exp=1710006989~hmac=dec2b90c6fbf2af5a7c6139e3d02f3f7a0f98a9cb81bb45edc2f446b573132d8&w=740"
+            width="336" height="530"></div>
+        {% elif details.status == 2 %}
+        <div class="col"><img class="rounded w-100 h-100 fit-cover" style="min-height: 200px;"
+            src="https://img.freepik.com/free-vector/simple-sketch-waiter_1308-84157.jpg?t=st=1710007582~exp=1710011182~hmac=c43ae6741f8620b747412ee86531c5c14c696d1ede6223c5251eeced52ae3983&w=740"
+            width="336" height="530"></div>
+        {% elif details.status == 3 %}
+        <div class="col"><img class="rounded w-100 h-100 fit-cover" style="min-height: 200px;"
+            src="https://img.freepik.com/free-vector/hand-drawn-flat-design-people-eating-collection_23-2149194118.jpg?t=st=1710008004~exp=1710011604~hmac=12e867f515cc020386c336f27ca8b728fd944c9beab46b36761a45b8786bd663&w=740"
+            width="336" height="530"></div>
+        {% elif details.status == 4 %}
         <div class="col"><img class="rounded w-100 h-100 fit-cover" style="min-height: 200px;"
             src="https://img.freepik.com/free-vector/flat-worried-woman-have-list-credit-debts-overdue-bills-girl-reading-letter-from-collection-agency-about-financial-problems-loans-unpaid-tax-calculation-payment-expenses-concept_88138-805.jpg?t=st=1710009940~exp=1710013540~hmac=c6385bc8a5ee32299f02a87ddaf1338f39106b2ece500e02bd5db0298c4543b9&w=1060"
             width="336" height="530"></div>
@@ -64,7 +61,16 @@
                 <div class="card-body d-flex flex-column align-items-center">
                   <div style="margin-top: 3%; margin-left: 2%; margin-right: 2%;">
                     <div class="progress">
-                      {% if details.status == 1 %}
+                      {% if details.attend == 1 %}
+                    </div>
+                    <div>
+                      <ul>
+                        <li>{{details.staff_no}} : Hey, I will be there in no time</li>
+                        <li> Staff assigned : {{details.staff_no}}</li>
+                        <li> Approximate wait time : 0.00 min</li>
+                        <li>Final Bill : xxxxx</li>
+                      
+                      {% elif details.status == 1 %}
                       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                         aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 5%"></div>
                     </div>
@@ -74,10 +80,9 @@
                         <li> Staff assigned : {{details.staff_no}}</li>
                         <li> Approximate wait time : 15 min</li>
                         <li>Final Bill : xxxxx</li>
-                        {% endif %}
 
                         <!-- Block for condition 2 -- food about to server -->
-                        {% if details.status == 2 %}
+                        {% elif details.status == 2 %}
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                           aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
                     </div>
@@ -87,10 +92,9 @@
                         <li> Staff assigned : {{details.staff_no}}</li>
                         <li> Approximate wait time : 1 min</li>
                         <li>Final Bill : xxxxx</li>
-                        {% endif %}
 
                         <!-- Block for condition 3 -- food served -->
-                        {% if details.status == 3 %}
+                        {% elif details.status == 3 %}
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                           aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                     </div>
@@ -100,19 +104,10 @@
                         <li> Staff assigned : {{details.staff_no}}</li>
                         <li> Approximate wait time : 0 min</li>
                         <li>Final Bill : xxxxx</li>
-                        {% endif %}
 
-                        {% if details.status == 4 %}
-                    </div>
-                    <div>
-                      <ul>
-                        <li>{{details.staff_no}} : Hey, I will be there in no time</li>
-                        <li> Staff assigned : {{details.staff_no}}</li>
-                        <li> Approximate wait time : 0.00 min</li>
-                        <li>Final Bill : xxxxx</li>
-                        {% endif %}
+                        
 
-                        {% if details.status == 5 %}
+                        {% elif details.status == 4 %}
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
                           aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
                     </div>
@@ -120,17 +115,31 @@
                       <ul>
                         <li> {{details.staff_no}} : Hope you had a wonderful time !!!!!!!!!</li>
                         <li> Staff assigned : {{details.staff_no}}</li>
-                        <li> Approximate wait time : 0 min</li>
-                        <li>Final Bill : xxxxx</li>
+                        <form method="post">
+                          {% csrf_token %}
+                        <select name="star" class="form-select" aria-label="Default select example">
+                          <option selected>Please Select Your Rating Experience</option>
+                          <option value="1">5 - Excellent</option>
+                          <option value="2">4 - Very Good</option>
+                          <option value="3">3 - Good</option>
+                          <option value="3">2 - Bad</option>
+                          <option value="3">1 - Very Bad</option>
+                        </select>
+                        <li>Please Pay the Bill to the Counter : xxxxx</li>
+                      <button type="submit" name="rating" class="btn btn-warning">Exit</button>
+                      </form>
+
                         {% endif %}
                       </ul>
                     </div>
                     <div>
+                      {% if details.status != 4 %}
                       <form method="post">
                         {% csrf_token %}
                       <button type="submit" name="staffcall" class="btn btn-warning">Call Staff</button>
                       <button type="submit" name="billrequest" class="btn btn-info" >Request Bill</button>
                     </form>
+                    {% endif %}
 
 
                       <!-- Modal -->

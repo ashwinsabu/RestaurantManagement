@@ -8,10 +8,8 @@ def sign_up(request):
         form = UserSignUpForm(request.POST)
         if form.is_valid():
             user=form.save(commit=False)
-            user.is_staff=True
+            user.is_staff=False
             user.save()
-            # un = form.cleaned_data.get('username')
-            # messages.success(request, 'Account created for {}.'.format(un))
             return redirect('login')
     elif request.method == "GET":
         form = UserSignUpForm()
@@ -22,12 +20,13 @@ def signin(request):
     msg = None
     if request.method == 'POST':
         if form.is_valid():
+            print("Hiii")
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-            if user is not None and user.is_staff:
+            if user is not None and user.is_staff==True:
                 login(request, user)
-                return redirect('tables')
+                return redirect('index_staff')
             elif user is not None and user.is_staff==False:
                 login(request, user)
                 return redirect('index')

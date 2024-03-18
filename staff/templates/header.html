@@ -1,38 +1,40 @@
 <!-- pages/templates/base.html -->
 <header>
 
-    <div>
-        <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #4a494b;">
-            <a class="navbar-brand" href="#">
-                <img src="/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
-              </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.html">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.html">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">tables</a>
-                </li>
-                <div style="position: absolute; right: 10px; top: 5px;">
-                    <button type="button" class="btn btn-info" href="staff_login.html">Staff Login</button>        
-                </div>
-              </ul>
-            </div>
-          </nav>
-        </div>
-    
-  
+  <div>
+    <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #4a494b;">
+      <a class="navbar-brand" href="#">
+        <img src="https://img.freepik.com/free-psd/restaurant-vintage-badge-template-psd-set-remixed-from-public-domain-artworks_53876-141767.jpg?t=st=1710765627~exp=1710769227~hmac=20e934bf5d517da40e73f66cf7f73a05369a299458b38d576c82aea1f31876ba&w=740" width="30" height="30" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'index_staff' %}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'menuEditPage' %}">Menu Edit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'custQueries' %}">Customer Q</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'starEmployee' %}">Star of Month</a>
+          </li>
+          <div style="position: absolute; right: 10px; top: 5px;">
+            <button type="button" class="btn btn-info" href="staff_login.html">{{user.username}}</button>
+            <button type="button" class="btn btn-danger" href="{% url 'sign_out' %}">Sign Out</button>
+          </div>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+
 </header>
-  
-  {% block content %}
-  {% endblock content %}
+
+{% block content %}
+{% endblock content %}
