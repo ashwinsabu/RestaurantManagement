@@ -4,11 +4,13 @@ from .models import*
 from datetime import datetime,date
 from django.utils.timezone import localtime, make_aware
 from django.db.models import Sum
-from employee_pkg import best_employee
+from django.contrib.auth import logout
+from employee_pkg import best_employee #Library created and imported
 
 
 # Create your views here.
 def StaffIndex(request):
+    """To display the index page of the staff section"""
     if request.user.is_authenticated and request.user.is_staff == True:
         if request.method=='POST':
             if "prev" in request.POST:
@@ -88,6 +90,7 @@ def StaffIndex(request):
         return redirect('login') 
 
 def menuEditPage(request):
+    """Page to edit the menu of the food"""
     if request.user.is_authenticated and request.user.is_staff == True:
 
         if request.method=="POST":
@@ -138,6 +141,7 @@ def menuEditPage(request):
 
 
 def custQueries(request):
+    """Page to address customer queries"""
     if request.user.is_authenticated and request.user.is_staff == True:
         if request.method=="POST":
             if "update" in request.POST:
@@ -159,6 +163,7 @@ def custQueries(request):
         return redirect('login') 
     
 def StarPageView(request):
+    """Page to display the star of the month"""
     staffs=User.objects.filter(is_staff=True)
     employeedata=[]
     a=best_employee.BestEmployee()
@@ -187,3 +192,9 @@ def StarPageView(request):
         "ranks" : result['ranking']
     }
     return render(request, 'star_employee.html',context)
+
+def logout_user(request):
+    """Function for logging out"""
+    print("test")
+    logout(request)
+    return redirect('login')

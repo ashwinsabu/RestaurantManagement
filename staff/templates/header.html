@@ -26,7 +26,8 @@
           </li>
           <div style="position: absolute; right: 10px; top: 5px;">
             <button type="button" class="btn btn-info" href="staff_login.html">{{user.username}}</button>
-            <button type="button" class="btn btn-danger" href="{% url 'sign_out' %}">Sign Out</button>
+            <a type="button" class="btn btn-danger" href="{% url 'logout' %}">Log Out</a>
+
           </div>
         </ul>
       </div>

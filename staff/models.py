@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Attendance(models.Model):
+    """Table to mark the attendance of staff"""
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     login_time = models.DateTimeField()
     logout_time = models.DateTimeField(null=True)

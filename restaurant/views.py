@@ -10,6 +10,7 @@ from django.contrib import messages
 # Create your views here.
 #Index Page
 def IndexPageView(request):
+    """Index Page for customers"""
     if request.method == 'POST':
         userid = request.POST.get('userid')#retrieves the current user logged into the system
         try:
@@ -26,6 +27,7 @@ def IndexPageView(request):
 
 #Tables page
 def TablePageView(request):
+    """Page for table selection"""
     if request.user.is_authenticated and request.user.is_staff == False:    #checks if user is logged in and is a CUSTOMER
         tables = Table.objects.all().values()   #Retrieves the values of all table created by ADMIN
         context = {
@@ -37,6 +39,7 @@ def TablePageView(request):
 
 #menu page
 def menuPageView(request, id):
+    """Page to display the menu"""
     if request.user.is_authenticated and request.user.is_staff == False:    #checks if user is logged in and is a CUSTOMER
         cartList=[]
         if 'cart' in request.session:   #check if cart session is present and add the menu to the cartList which then is send to the page to display
@@ -123,6 +126,7 @@ def menuPageView(request, id):
 
 
 def stausfoodPageView(request,id):
+    """Page to display the status of food odered by the customers"""
     if request.user.is_authenticated and request.user.is_staff == False:
         if request.method=="POST":
             # check if customer has initiated a call status
@@ -163,6 +167,7 @@ def stausfoodPageView(request,id):
 
 
 def contactPageView(request):
+    """Managing the customer queries"""
     if(request.method=='POST'): #Creates a record in Customer Request Table after the submissoin from index.html
         name = request.POST.get('name') 
         email = request.POST.get('email')
@@ -177,5 +182,6 @@ def contactPageView(request):
     return render(request, 'users/contact.html')
 
 def AboutPageView(request):
+    """Display the details of the team"""
     return render(request, 'users/about.html')
 

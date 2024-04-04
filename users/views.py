@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from .forms import UserSignUpForm,LoginForm
 
 def sign_up(request):
+    """User registeration"""
     if request.method == "POST":
         form = UserSignUpForm(request.POST)
         if form.is_valid():
@@ -16,6 +17,7 @@ def sign_up(request):
     return render(request, 'users/signup.html', {'form': form})
     
 def signin(request):
+    """User login"""
     form = LoginForm(request.POST or None)
     msg = None
     if request.method == 'POST':
@@ -35,6 +37,3 @@ def signin(request):
         else:
             msg = 'error validating form'
     return render(request, 'users/signin.html', {'form': form, 'msg': msg})
-
-def index20(request):
-    return render(request, 'users/index20.html')
