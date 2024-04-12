@@ -9,6 +9,7 @@ class Menu(models.Model):
     type = models.CharField(null=True,max_length=200)
     quantity = models.IntegerField(null=True)
     status=models.IntegerField(null=True,default=0)
+    price=models.IntegerField(null=True)
     def __str__(self):
         return self.name
 
@@ -34,6 +35,7 @@ class Orders(models.Model):
     attend=models.IntegerField(null=True,default=0)
     date= models.DateField(null=True)
     star=models.IntegerField(null=True)
+    total_price=models.IntegerField(null=True)
     def __int__(self):
         return str(self.status)
     

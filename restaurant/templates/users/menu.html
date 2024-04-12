@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Food Zone</title>
   </head>
   <body>
     {% extends './header.html' %}
@@ -29,6 +29,7 @@
                   <img src="https://img.freepik.com/free-vector/hand-drawn-italian-restaurant-facebook-template_23-2150202671.jpg?t=st=1709295670~exp=1709299270~hmac=0a8b090d9547e0760e064e996b677d338e35bf2dd32d19b32a99742566f960cd&w=1060" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title">{{x.name}}</h5>
+                    <h6 class="card-title">€ {{x.price}}</h6>
                     <form method="post">
                       {% csrf_token %}
                       <input type="hidden" name="menu_id" value="{{ x.id }}">
@@ -52,6 +53,7 @@
               <img src="https://img.freepik.com/free-vector/hand-drawn-italian-restaurant-facebook-template_23-2150202671.jpg?t=st=1709295670~exp=1709299270~hmac=0a8b090d9547e0760e064e996b677d338e35bf2dd32d19b32a99742566f960cd&w=1060" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">{{x.name}}</h5>
+                <h6 class="card-title">€ {{x.price}}</h6>
                 <form method="post">
                   {% csrf_token %}
                   <input type="hidden" name="menu_id" value="{{ x.id }}">

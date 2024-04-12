@@ -76,6 +76,7 @@ def StaffIndex(request):
         year = datetime.now().year
         hours=Attendance.objects.filter(user_id=request.user,login_time__month=month,login_time__year=year)
         hours_sum = hours.aggregate(total=Sum('hours'))
+        print(hours)
         orderids=[order.id for order in orders]
         orderlist=OrderList.objects.filter(order_no__in=orderids)
         context = {
@@ -100,6 +101,7 @@ def menuEditPage(request):
                 type = request.POST.get('type')
                 quantity = request.POST.get('quantity')
                 status = request.POST.get('status')
+                price = request.POST.get('price')
                 id= request.POST.get('id')
                 menuupdate= Menu.objects.get(id=id)
                 menuupdate.name=name
@@ -107,6 +109,7 @@ def menuEditPage(request):
                 menuupdate.type=type
                 menuupdate.quantity=quantity
                 menuupdate.status=status
+                menuupdate.price=price
                 menuupdate.save()
 
                 return redirect('menuEditPage')
@@ -123,12 +126,14 @@ def menuEditPage(request):
                 type = request.POST.get('type')
                 quantity = request.POST.get('quantity')
                 status = request.POST.get('status')
+                price = request.POST.get('price')
                 add=Menu.objects.create(
                     name=name,
                     description=description,
                     type=type,
                     quantity=quantity,
-                    status=status
+                    status=status,
+                    price=price
                 )
                 return redirect('menuEditPage')
         menu= Menu.objects.values()

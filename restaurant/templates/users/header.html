@@ -2,7 +2,7 @@
 <header>
 
     <div>
-        <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #4a494b;">
+        <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #857a92;">
             <a class="navbar-brand" href="#">
                 <img src="https://img.freepik.com/free-psd/restaurant-vintage-badge-template-psd-set-remixed-from-public-domain-artworks_53876-141767.jpg?t=st=1710765627~exp=1710769227~hmac=20e934bf5d517da40e73f66cf7f73a05369a299458b38d576c82aea1f31876ba&w=740" width="30" height="30" alt="">
               </a>
@@ -14,18 +14,23 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'about' %}">About Us</a>
+                <li class="nav-item" active>
+                  <a class="nav-link" href="{% url 'about' %}">About Us </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'contact' %}">Contact Us</a>
+                <li class="nav-item" active>
+                  <a class="nav-link" href="{% url 'contact' %}">Contact Us </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'tables' %}">Tables</a>
+                <li class="nav-item" active>
+                  <a class="nav-link" href="{% url 'tables' %}">Tables </a>
                 </li>
                 <div style="position: absolute; right: 10px; top: 5px;">
-                    <button type="button" class="btn btn-info">{{user.username}}</button>        
-                </div>
+                  {% if request.user.is_authenticated %}
+                    <button type="button" class="btn btn-info">{{user.username}}</button>    
+                  <a type="button" class="btn btn-danger" href="{% url 'logout' %}">Log Out </a>
+                {% else %}
+                <a type="button" class="btn btn-success" href="{% url 'login' %}">Log In </a>
+                {% endif %}
+              </div>
               </ul>
             </div>
           </nav>

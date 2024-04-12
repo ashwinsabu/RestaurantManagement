@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-  <title>Hello, world!</title>
+  <title>Food Zone</title>
 </head>
 
 <body>
@@ -68,7 +68,7 @@
                         <li>{{details.staff_no}} : Hey, I will be there in no time</li>
                         <li> Staff assigned : {{details.staff_no}}</li>
                         <li> Approximate wait time : 0.00 min</li>
-                        <li>Final Bill : xxxxx</li>
+                        <li>Final Bill : € {{details.total_price}}</li>
                       
                       {% elif details.status == 1 %}
                       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
@@ -79,7 +79,7 @@
                         <li> Food status : Preparing</li>
                         <li> Staff assigned : {{details.staff_no}}</li>
                         <li> Approximate wait time : 15 min</li>
-                        <li>Final Bill : xxxxx</li>
+                        <li>Final Bill : € {{details.total_price}}</li>
 
                         <!-- Block for condition 2 -- food about to server -->
                         {% elif details.status == 2 %}
@@ -91,7 +91,7 @@
                         <li> Food status : About to serve. Get Ready</li>
                         <li> Staff assigned : {{details.staff_no}}</li>
                         <li> Approximate wait time : 1 min</li>
-                        <li>Final Bill : xxxxx</li>
+                        <li>Final Bill : € {{details.total_price}}</li>
 
                         <!-- Block for condition 3 -- food served -->
                         {% elif details.status == 3 %}
@@ -103,7 +103,7 @@
                         <li> Food status : Served. Have a great time</li>
                         <li> Staff assigned : {{details.staff_no}}</li>
                         <li> Approximate wait time : 0 min</li>
-                        <li>Final Bill : xxxxx</li>
+                        <li>Final Bill : € {{details.total_price}}</li>
 
                         
 
@@ -125,7 +125,7 @@
                           <option value="3">2 - Bad</option>
                           <option value="3">1 - Very Bad</option>
                         </select>
-                        <li>Please Pay the Bill to the Counter : xxxxx</li>
+                        <li>Please Pay the Bill to the Counter : € {{details.total_price}}</li>
                       <button type="submit" name="rating" class="btn btn-warning">Exit</button>
                       </form>
 

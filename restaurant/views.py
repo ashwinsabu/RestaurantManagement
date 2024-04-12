@@ -95,6 +95,7 @@ def menuPageView(request, id):
                     update_ordercount.active_orders+=1
                     update_ordercount.save()
                     #As the order is created, we need to also create the orderlist and update it in the table
+                    total_price=0
                     for items in cart:
                         quantity=cart.count(items)
                         if(quantity==0):
@@ -104,11 +105,14 @@ def menuPageView(request, id):
                         print(carts)
                         cart=carts
                         menuitem = Menu.objects.get(id=items)
+                        total_price+=menuitem.price
                         orderlist = OrderList.objects.create(
                             menu_no=menuitem,
                             order_no=order,
                             quantity=quantity
                         )
+                    order.total_price=total_price
+                    order.save()
                     # OrderList.objects.filter(order_no=None).update(order_no=order)
                     request.session.pop('cart', None)
                     return redirect('food_status',order.id)

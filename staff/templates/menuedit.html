@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Food Zone</title>
   </head>
   <body>
     {% extends './header.html' %}
@@ -22,6 +22,7 @@
                 <th scope="col">Menu ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
+                <th scope="col">Price</th>
                 <th scope="col">Type</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Status</th>
@@ -37,9 +38,26 @@
                 <input value={{x.id}} name="id" type="hidden">
                 <td><input value={{x.name}} name="name"></td>
                 <td><input value={{x.description}} name="description"></td>
-                <td><input value={{x.type}} name="type"></td>
+                <td><input value={{x.price}} name="price"></td>
+                <td><select name="type" id="type">
+                  {% if x.type == 'veg' %}
+                  <option value="veg" selected>Veg</option>
+                  <option value="nonveg">Non Veg</option>
+                  {% else %}
+                  <option value="veg" >Veg</option>
+                  <option value="nonveg" selected>Non Veg</option>
+                  {% endif %}
+                </select></td>
                 <td><input value={{x.quantity}} name="quantity"></td>
-                <td><input value={{x.status}} name="status"></td>
+                <td><select name="status" id="status">
+                  {% if x.status == 1 %}
+                  <option value="1" selected>Special</option>
+                  <option value="0">Normal</option>
+                  {% else %}
+                  <option value="1">Special</option>
+                  <option value="0" selected>Normal</option>
+                  {% endif %}
+                </select></td>
                 <td><button type="submit" name="edit" class="btn btn-warning">Update</button></td>
                 <td><button type="submit" name="remove" class="btn btn-danger">Delete</button></td>
             </form>
@@ -51,7 +69,11 @@
                 <th scope="row">Add new item</th>
                 <td><input  name="name"></td>
                 <td><input name="description"></td>
-                <td><input  name="type"></td>
+                <td><input name="price"></td>
+                <td><select name="type" id="type">
+                  <option value="veg">Veg</option>
+                  <option value="nonveg">Non Veg</option>
+                </select></td>
                 <td><input  name="quantity"></td>
                 <td><select name="status" id="status">
                   <option value="0">Normal</option>
