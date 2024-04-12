@@ -5,6 +5,7 @@ from datetime import datetime,date
 from django.utils.timezone import localtime, make_aware
 from django.db.models import Sum
 from django.contrib.auth import logout
+import boto3
 from employee_pkg import best_employee #Library created and imported
 
 
@@ -110,6 +111,7 @@ def menuEditPage(request):
                 menuupdate.quantity=quantity
                 menuupdate.status=status
                 menuupdate.price=price
+                
                 menuupdate.save()
 
                 return redirect('menuEditPage')
@@ -157,7 +159,12 @@ def custQueries(request):
                 queries.status=1
                 queries.staff_ad=request.user
                 queries.save()
-
+                client = boto3.client('sns')
+                response = client.publish(
+                    TopicArn='arn:aws:sns:eu-west-1:250738637992:x23196505-project-final',
+                    Message=comments,
+                    Subject='FoodZone Response'
+                )
                 return redirect('custQueries')
         queries= CustomerRequest.objects.filter(status=0)
         context = {
