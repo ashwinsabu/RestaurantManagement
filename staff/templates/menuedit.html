@@ -26,6 +26,7 @@
                 <th scope="col">Type</th>
                 <th scope="col">Quantity</th>
                 <th scope="col">Status</th>
+                <th scope="col">Image</th>
                 <th scope="col">Edit</th>
               </tr>
             </thead>
@@ -58,13 +59,14 @@
                   <option value="0" selected>Normal</option>
                   {% endif %}
                 </select></td>
+                <td>{{x.image.url}}</td>
                 <td><button type="submit" name="edit" class="btn btn-warning">Update</button></td>
                 <td><button type="submit" name="remove" class="btn btn-danger">Delete</button></td>
             </form>
               </tr>
               {% endfor %}
               <tr>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                 <th scope="row">Add new item</th>
                 <td><input  name="name"></td>
@@ -79,6 +81,7 @@
                   <option value="0">Normal</option>
                   <option value="1">Special</option>
                 </select></td>
+                <td>{{ form.image }}</td>
                 <td><button type="submit" name="add" class="btn btn-success">Add</button></td>
             </form>
               </tr>

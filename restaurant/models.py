@@ -3,14 +3,14 @@ from django.contrib.auth.models import User
 
 
 class Menu(models.Model):
-    image = models.CharField(max_length=30)
+    image = models.ImageField(null=True,upload_to='uploads/test/')
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=200)
     type = models.CharField(null=True,max_length=200)
     quantity = models.IntegerField(null=True)
     status=models.IntegerField(null=True,default=0)
     price=models.IntegerField(null=True)
-    image = models.ImageField(upload_to='uploads/test/')
+    # image = models.ImageField(upload_to='uploads/test/')
     def __str__(self):
         return self.name
 

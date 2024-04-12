@@ -6,6 +6,7 @@ from django.utils.timezone import localtime, make_aware
 from django.db.models import Sum
 from django.contrib.auth import logout
 import boto3
+from .forms import MenuCreation
 from employee_pkg import best_employee #Library created and imported
 
 
@@ -123,24 +124,31 @@ def menuEditPage(request):
                 return redirect('menuEditPage')
             
             elif "add" in request.POST:
-                name = request.POST.get('name')
-                description = request.POST.get('description')
-                type = request.POST.get('type')
-                quantity = request.POST.get('quantity')
-                status = request.POST.get('status')
-                price = request.POST.get('price')
-                add=Menu.objects.create(
-                    name=name,
-                    description=description,
-                    type=type,
-                    quantity=quantity,
-                    status=status,
-                    price=price
-                )
-                return redirect('menuEditPage')
+                form = MenuCreation(request.POST,request.FILES)
+                if form.is_valid():
+                    print("Hii")
+                    image = form.cleaned_data['image']
+                    name = request.POST.get('name')
+                    description = request.POST.get('description')
+                    type = request.POST.get('type')
+                    quantity = request.POST.get('quantity')
+                    status = request.POST.get('status')
+                    price = request.POST.get('price')
+                    add=Menu.objects.create(
+                        image=image,
+                        name=name,
+                        description=description,
+                        type=type,
+                        quantity=quantity,
+                        status=status,
+                        price=price
+                    )
+                    return redirect('menuEditPage')
         menu= Menu.objects.values()
+        form = MenuCreation()
         context = {
             'menu':menu,
+            'form':form
         }
         return render(request, 'menuedit.html',context)
     else:
