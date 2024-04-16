@@ -10,7 +10,6 @@ class Menu(models.Model):
     quantity = models.IntegerField(null=True)
     status=models.IntegerField(null=True,default=0)
     price=models.IntegerField(null=True)
-    # image = models.ImageField(upload_to='uploads/test/')
     def __str__(self):
         return self.name
 

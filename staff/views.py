@@ -20,7 +20,6 @@ def StaffIndex(request):
                 order=Orders.objects.get(id=orderid)
                 if(order.status>1):
                     order.status=order.status-1
-                print(request.method)
                 order.save()
                 return redirect('index_staff') 
             
@@ -78,7 +77,6 @@ def StaffIndex(request):
         year = datetime.now().year
         hours=Attendance.objects.filter(user_id=request.user,login_time__month=month,login_time__year=year)
         hours_sum = hours.aggregate(total=Sum('hours'))
-        print(hours)
         orderids=[order.id for order in orders]
         orderlist=OrderList.objects.filter(order_no__in=orderids)
         context = {
@@ -126,7 +124,6 @@ def menuEditPage(request):
             elif "add" in request.POST:
                 form = MenuCreation(request.POST,request.FILES)
                 if form.is_valid():
-                    print("Hii")
                     image = form.cleaned_data['image']
                     name = request.POST.get('name')
                     description = request.POST.get('description')
@@ -206,7 +203,6 @@ def StarPageView(request):
         a.add_employee(employee_data['name'], employee_data['hours_worked'], employee_data['rating'], employee_data['orders_taken'])
     result = a.evaluate()
     res = result['ranking']
-    print(res)
     context = {
         "winner": result['best_emp'],
         "ranks" : result['ranking']
@@ -215,6 +211,5 @@ def StarPageView(request):
 
 def logout_user(request):
     """Function for logging out"""
-    print("test")
     logout(request)
     return redirect('login')

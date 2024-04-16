@@ -120,6 +120,7 @@ def menuPageView(request, id):
                     messages.info(request, "There are no staff logged in to take up the order. Kindly contact the manager to assign a staff")
 
         menu = Menu.objects.all().values()
+        print(menu)
 
         context = {'menu': menu,
                    'cartList':cartList}
