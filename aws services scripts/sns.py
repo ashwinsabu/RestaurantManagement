@@ -2,6 +2,7 @@ import boto3
 
 client = boto3.client('sns')
 
+#create an s3 topic
 response = client.create_topic(
     Name='x23196505-project-final',
     Attributes={
@@ -11,8 +12,9 @@ response = client.create_topic(
 )
 
 if response:
-    print("Topc is crreated")
-    
+    print("Topc is created")
+
+#create a subscription    
 response2 = client.subscribe(
     TopicArn=response['TopicArn'],
     Protocol='email',

@@ -1,3 +1,4 @@
+"""Operations performed from customer in restaurant"""
 from django.shortcuts import render, redirect
 from .models import *
 from staff.models import *

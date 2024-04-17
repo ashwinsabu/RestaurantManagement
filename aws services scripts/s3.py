@@ -18,7 +18,7 @@ def create_bucket(bucket_name, region='eu-west-1'):
             location = {'LocationConstraint': region}
             s3_client.create_bucket(Bucket=bucket_name,
                                     CreateBucketConfiguration=location,)
-        # Disable Block Public Access settings
+        # Enable Block Public Access settings
         s3_client.put_public_access_block(
             Bucket=bucket_name,
             PublicAccessBlockConfiguration={

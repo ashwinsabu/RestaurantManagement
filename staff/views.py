@@ -1,3 +1,4 @@
+"""Operation performed from user side"""
 from django.shortcuts import render,redirect
 from restaurant.models import *
 from .models import*
