@@ -37,8 +37,8 @@
                     {% csrf_token %}
                 <th scope="row">{{x.id}}</th>
                 <input value={{x.id}} name="id" type="hidden">
-                <td><input value={{x.name}} name="name"></td>
-                <td><input value={{x.description}} name="description"></td>
+                <td><input value="{{x.name}}" name="name"></td>
+                <td><input value="{{x.description}}" name="description"></td>
                 <td><input value={{x.price}} name="price"></td>
                 <td><select name="type" id="type">
                   {% if x.type == 'veg' %}

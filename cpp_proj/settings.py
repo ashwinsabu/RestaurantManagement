@@ -25,10 +25,10 @@ SECRET_KEY = 'django-insecure-7zj6p(1$$%e9&fd)(kwith4yy+3(pk+x$sq*8@s_7(zwu5d10y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['x23196505CppProj.eba-fuaeduwk.eu-west-1.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['x23196505CppProj.eba-fuaeduwk.eu-west-1.elasticbeanstalk.com','90dead8c40c944abb060a9f19f888045.vfs.cloud9.eu-west-1.amazonaws.com']
 
-CSRF_TRUSTED_ORIGINS = [
-    'http://x23196505CppProj.eba-fuaeduwk.eu-west-1.elasticbeanstalk.com ']
+CSRF_TRUSTED_ORIGINS = ['http://x23196505CppProj.eba-fuaeduwk.eu-west-1.elasticbeanstalk.com ','https://90dead8c40c944abb060a9f19f888045.vfs.cloud9.eu-west-1.amazonaws.com']
+
 
 
 # Application definition
