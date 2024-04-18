@@ -165,7 +165,7 @@ def custQueries(request):
                 queries.status=1
                 queries.staff_ad=request.user
                 queries.save()
-                client = boto3.client('sns')
+                client = boto3.client('sns',region_name='eu-west-1')
                 response = client.publish(
                     TopicArn='arn:aws:sns:eu-west-1:250738637992:x23196505-project-final',
                     Message=comments,
