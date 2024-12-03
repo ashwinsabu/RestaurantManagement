@@ -82,8 +82,6 @@ Key Objectives:
 
 Access the application at [http://127.0.0.1:8000](http://127.0.0.1:8000) after running the server. 
 
-For cloud-hosted access, visit: [Deployed Application](http://x23196505cppproj.eba-fuaeduwk.eu-west-1.elasticbeanstalk.com/).
-
 ## Technologies and Dependencies
 
 - **Backend**: Django (Python Framework)
